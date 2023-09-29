@@ -12,5 +12,6 @@ urlpatterns = [
     path('allocate/', views.allocate_ip, name='allocate'),
     
     path('', include(available.urls), name='available'),
+    path('fill_db/', views.insert_ip_addresses),
     path('release/<str:ip_address>/', views.release_ip, ),
 ]

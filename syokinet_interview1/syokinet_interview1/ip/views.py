@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 # views.py in your 'ip' Django app
 
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from . import models
 import json
@@ -52,3 +52,25 @@ def release_ip(request, ip_address):
             'exception' : f'Exception: {str(e)}',
         }, status=404)
     
+
+import ipaddress
+
+
+
+
+def insert_ip_addresses(request, number=100):
+    def private_ipv4s():
+        for network in ['10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16']:
+            for ip in ipaddress.ip_network(network).hosts():
+                yield ip
+
+    i = 0
+    for ip in private_ipv4s():
+        if i >= number:
+            return JsonResponse({'no_of_ips in db' : models.Ips.objects.count()},
+                        status=200)
+        models.Ips.objects.get_or_create(address=str(ip), defaults={})
+        i += 1
+
+    return JsonResponse({'no_of_ips in db' : models.Ips.objects.count()},
+                        status=200)
