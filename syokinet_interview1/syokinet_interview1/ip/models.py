@@ -103,7 +103,8 @@ def allocate_ip(customer_email=None, customer_first_name=None,
 def release_ip(ip):
     try:
         with transaction.atomic():
-            Ips.objects.filter(address=ip).update(customer=None)
+            Ips.objects.filter(address=ip).update(customer=None,
+                                                  status=Ips.STATUS_AVAILABLE)
         
     except Exception as e:
         logging.exception("An error occurred while releasing an IP address")
