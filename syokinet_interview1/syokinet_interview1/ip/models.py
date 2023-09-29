@@ -11,6 +11,9 @@ class Customer(models.Model):
     customer_last_name = models.CharField(max_length=100)
     customer_email = models.EmailField(max_length=255, unique=True)
 
+    def __str__(self) -> str:
+        return self.customer_email
+
 class Ips(models.Model):
     STATUS_AVAILABLE = 'available'
     STATUS_ALLOCATED = 'allocated'
@@ -24,6 +27,12 @@ class Ips(models.Model):
                               default=STATUS_AVAILABLE)
     customer = models.OneToOneField(Customer, null=True, default=None,
                                     on_delete=models.SET_NULL)
+    
+    def __str__(self) -> str:
+        string = f'{self.address} || {self.status} || '
+        if self.customer:
+            return f'{string} {self.customer.customer_email}'
+        return f'{string}'
     
 
 
