@@ -1,0 +1,1 @@
+web: gunicorn syokinet_interview1.wsgi
