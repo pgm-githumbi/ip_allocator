@@ -3,8 +3,8 @@ A django api service to manage IP address allocation to users.
 
 
 
-Endpoint: /ip/allocate  
-Method: POST  
+Endpoint: /ip/allocate.    
+Method: POST.    
 Request Body:  
 json
 Copy code
