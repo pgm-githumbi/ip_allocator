@@ -3,18 +3,18 @@ A django api service to manage IP address allocation to users.
 
 
 
-Endpoint: /ip/allocate
-Method: POST
-Request Body:
+Endpoint: /ip/allocate  
+Method: POST  
+Request Body:  
 json
 Copy code
 {
     "customer_name": "John Doe",
     "email": "johndoe@email.com"
-}
-Response:
-Status 201 for success, with allocated IP details.
-Status 400 for bad request.
+}  
+Response:  
+Status 201 for success, with allocated IP details.  
+Status 400 for bad request.  
 Status 500 if no IPs are available.
 
 
