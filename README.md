@@ -19,20 +19,20 @@ Status 500 if no IPs are available.
 
 
 
-Endpoint: /ip/release/{ipAddress}
-Method: PUT
-Response:
-Status 200 for success.
-Status 404 if IP not found or not allocated.
-List Allocated IPs
+Endpoint: /ip/release/{ipAddress}.  
+Method: PUT.  
+Response:.  
+Status 200 for success.  
+Status 404 if IP not found or not allocated.  
+List Allocated IPs.  
 
 
 
-Endpoint: /ip/allocated
-Method: GET
-Response:
-Status 200 with list of allocated IPs and associated customer details.
-List Available IPs
+Endpoint: /ip/allocated.  
+Method: GET.  
+Response:.  
+Status 200 with list of allocated IPs and associated customer details.  
+List Available IPs.  
 
 
 Method: GET
